@@ -25,14 +25,16 @@ export const CategoryList = () => {
                 label={category.label}
               />
             ))}
+            
           </article>
           <Button
             variant="dark"
-            className="back__button"
+            className="categoryList"
             onClick={() => navigate(`/`)}
           >
             Back
           </Button>
+          
         </>
       );
     };

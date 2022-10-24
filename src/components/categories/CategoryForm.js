@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button, Container, Col, Form } from "react-bootstrap";
 import { CategoryList } from "./CategoryList";
+import "./Categories.css";
 
 export const CategoryForm = () => {
 
@@ -11,14 +12,12 @@ export const CategoryForm = () => {
     })
 
     const navigate = useNavigate();
-    const localFireHawkUser = localStorage.getItem("fireHawk_user");
-    const fireHawkUserObject = JSON.parse(localFireHawkUser);
 
     const handleSaveButtonClick = (e) => {
         e.preventDefault();
         //create API object
         const categoryToSendToAPI = {
-            id: fireHawkUserObject.id,
+            id: category.id,
             label: category.label,
         };
 
@@ -38,17 +37,21 @@ export const CategoryForm = () => {
     return (
         <>
         <Container>
-            <Form>
                 <Col className="CategoryListLeft">
                     {CategoryList()}
                 </Col>
+            <Form className="categoryForm">
                 <Col className="CategoryFormRight">
                     <Form.Group controlId="formCategory">
                         <Form.Label>
                             Create Your Own Category!
                         </Form.Label>
-                        <Form.Control type="text" placeholder="Create Category Label"/>
-                        <Button variant="dark" type="submit" onClick={(clickEvent) => handleSaveButtonClick(clickEvent)}>Submit</Button>
+                        <Form.Control type="text" placeholder="Create Category Label" value={category.label} onChange={(evt) => {
+                            const copy = {...category};
+                            copy.category = evt.target.value;
+                            update(copy)
+                        }}/>
+                        <Button variant="dark" type="submit" className="submit" onClick={(clickEvent) => handleSaveButtonClick(clickEvent)}>Submit</Button>
                     </Form.Group>
                 </Col>
             </Form>
