@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button, Container, Col, Form } from "react-bootstrap";
+import { CategoryList } from "./CategoryList";
 
 export const CategoryForm = () => {
 
@@ -38,7 +39,10 @@ export const CategoryForm = () => {
         <>
         <Container>
             <Form>
-                <Col className="">
+                <Col className="CategoryListLeft">
+                    {CategoryList()}
+                </Col>
+                <Col className="CategoryFormRight">
                     <Form.Group controlId="formCategory">
                         <Form.Label>
                             Create Your Own Category!

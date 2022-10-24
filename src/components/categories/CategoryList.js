@@ -7,7 +7,7 @@ export const CategoryList = () => {
     const [category, setCategory] = useState([]);
     const navigate = useNavigate();
     useEffect(() => {
-      fetch(`http://localhost:8088/categories?sort=label+asc`)
+      fetch(`http://localhost:8088/categories`)
         .then((response) => response.json())
         .then((categoryArray) => {
           setCategory(categoryArray);
@@ -17,7 +17,7 @@ export const CategoryList = () => {
     return (
         <>
           <article className="categories">
-            <h2 className="CategoryList__details">Categories</h2>
+            <h2 className="CategoryList__details">Categories:</h2>
             {category.map((category) => (
               <Category
                 key={`category--${category.id}`}
