@@ -50,13 +50,11 @@ export const CategoryForm = () => {
                 <Col className="CategoryListLeft">
                     <h2>Categories</h2>
                 {
-                categories.map(category => {
-                  return <ul className="categories">{category.label}</ul>
+                    categories.map(category => {
+                        return <ul className="categories">{category.label}</ul>
                 })
-            }
+                }
                 </Col>
-
-
                 <Form className="categoryForm">
                     <Col className="CategoryFormRight">
                         <Form.Group controlId="formCategory">
